@@ -23,10 +23,10 @@ Set-MpPreference [-ExclusionPath <String[]>] [-ExclusionExtension <String[]>] [-
  [-ReportingNonCriticalTimeOut <UInt32>] [-ScanAvgCPULoadFactor <Byte>]
  [-CheckForSignaturesBeforeRunningScan <Boolean>] [-ScanPurgeItemsAfterDelay <UInt32>]
  [-ScanOnlyIfIdleEnabled <Boolean>] [-ScanParameters <ScanType>] [-ScanScheduleDay <Day>]
- [-ScanScheduleQuickScanTime <DateTime>] [-ScanScheduleTime <DateTime>] [-SignatureFirstAuGracePeriod <UInt32>]
+ [-ScanScheduleQuickScanTime <DateTime>] [-ScanSchedulOffset <DateTime>] [-SignatureFirstAuGracePeriod <UInt32>]
  [-SignatureAuGracePeriod <UInt32>] [-SignatureDefinitionUpdateFileSharesSources <String>]
  [-SignatureDisableUpdateOnStartupWithoutEngine <Boolean>] [-SignatureFallbackOrder <String>]
- [-SignatureScheduleDay <Day>] [-SignatureScheduleTime <DateTime>] [-SignatureUpdateCatchupInterval <UInt32>]
+ [-SignatureScheduleDay <Day>] [-SignatureScheduleTime <UInt32 >] [-SignatureUpdateCatchupInterval <UInt32>]
  [-SignatureUpdateInterval <UInt32>] [-MAPSReporting <MAPSReportingType>]
  [-SubmitSamplesConsent <SubmitSamplesConsentType>] [-DisableAutoExclusions <Boolean>]
  [-DisablePrivacyMode <Boolean>] [-RandomizeScheduleTaskTimes <Boolean>] [-DisableBehaviorMonitoring <Boolean>]
@@ -972,6 +972,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScanScheduleOffset
+Configures the number of minutes after midnight to perform a scheduled scan. The time on the endpoint is used to determine the local time. If you enable this setting, a scheduled scan will run at the time specified. If you disable or do not enable this setting, a scheduled scan runs at the default time of two hours after midnight (120).
+
+```yaml
+Type: UInt32
+Parameter Sets: (All)
+Aliases: scso
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScanScheduleQuickScanTime
 Specifies the time of day, as the number of minutes after midnight, to perform a scheduled quick scan.
 The time refers to the local time on the computer.
@@ -991,21 +1006,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScanScheduleTime
-Specifies the time of day, as the number of minutes after midnight, to perform a scheduled scan.
-The time refers to the local time on the computer.
-If you do not specify a value for this parameter, a scheduled scan runs at a default time of two hours after midnight.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: scst
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+This setting is discontinued and replaced with -ScanScheduleOffset as of January 2022 (version 4.18.2201.X) update to Microsoft Defender Antivirus
 
 ### -SevereThreatDefaultAction
 Specifies which automatic remediation action to take for a severe level threat.
